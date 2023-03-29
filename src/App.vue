@@ -1,30 +1,15 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <router-view />
+  <TabBar v-if="isShowTabBar"></TabBar>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts" setup>
+import { computed } from 'vue'
+import TabBar from './components/common/TabBar.vue'
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
-nav {
-  padding: 30px;
+const isShowTabBar = computed(() => route.meta.isShowTabBar)
+</script>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<style lang="less"></style>
