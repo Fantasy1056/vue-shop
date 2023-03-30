@@ -13,7 +13,8 @@
     "pinia": "^2.0.33",
     "vant": "^4.1.2",
     "vue": "^3.2.13",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vue3-lazy": "^1.0.0-alpha.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",

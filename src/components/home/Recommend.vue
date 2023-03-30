@@ -5,7 +5,7 @@
     <ul>
       <li v-for="li in recommendList" :key="li.id">
         <div class="img">
-          <img :src="li.url" alt="" />
+          <img v-lazy="li.imgUrl" />
         </div>
         <div class="info">
           <h3 class="name">{{ li.name }}</h3>
@@ -28,7 +28,7 @@ import { reqGetHotList } from '@/api'
 interface Hot {
   id: number
   name: string
-  url: string
+  imgUrl: string
   desc: string
   title: string
   price: number
@@ -91,7 +91,10 @@ getHotList()
         }
       }
       .img {
+        display: flex;
         width: 100%;
+        justify-self: center;
+        align-items: center;
         img {
           width: 100%;
         }

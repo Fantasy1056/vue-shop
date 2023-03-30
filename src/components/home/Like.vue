@@ -54,13 +54,16 @@ getLike()
       display: flex;
       flex-direction: column;
       background-color: #fff;
+      width: 50%;
+      padding: 0.1333rem;
+      margin-bottom: 0.5333rem;
       .img {
-        width: 178px;
-        height: 178px;
+        width: 100%;
         background-color: #f3f3f3;
+        justify-self: center;
+        align-self: center;
         img {
-          width: 178px;
-          height: 178px;
+          width: 100%;
         }
       }
       .info {

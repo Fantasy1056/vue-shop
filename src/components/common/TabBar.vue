@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { reqGetTabBar } from '@/api/index'
 interface TabBar {
   active: number
@@ -27,7 +27,10 @@ interface TabBar {
   path: string
   title: string
 }
+const props = defineProps(['index'])
 const active = ref(0)
+const index = computed(() => props.index)
+active.value = index.value
 const routerList = ref<TabBar[]>([])
 const getTabBar = async () => {
   const { data: res } = await reqGetTabBar()

@@ -1,6 +1,6 @@
 <template>
   <router-view />
-  <TabBar v-if="isShowTabBar"></TabBar>
+  <TabBar v-if="isShowTabBar" :index="route.meta.tabBarIndex"></TabBar>
 </template>
 
 <script lang="ts" setup>

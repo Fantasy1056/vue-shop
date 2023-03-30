@@ -6,7 +6,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'home',
     component: Home,
     meta: {
-      isShowTabBar: true
+      isShowTabBar: true,
+      tabBarIndex: 0
     }
   },
   {
@@ -14,7 +15,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'list',
     component: () => import('@/views/List.vue'),
     meta: {
-      isShowTabBar: true
+      isShowTabBar: true,
+      tabBarIndex: 1
     }
   },
   {
@@ -22,7 +24,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'cart',
     component: () => import('@/views/Cart.vue'),
     meta: {
-      isShowTabBar: true
+      isShowTabBar: true,
+      tabBarIndex: 2
     }
   },
   {
@@ -30,16 +33,31 @@ const routes: Array<RouteRecordRaw> = [
     name: 'user',
     component: () => import('@/views/User.vue'),
     meta: {
-      isShowTabBar: true
+      isShowTabBar: true,
+      tabBarIndex: 3
     }
   },
   {
     path: '/search',
     name: 'search',
+    redirect: '/search/index',
     component: () => import('@/views/Search.vue'),
     meta: {
-      isShowTabBar: true
-    }
+      isShowTabBar: true,
+      tabBarIndex: -1
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'index',
+        component: () => import('@/views/search/SearchIndex.vue')
+      },
+      {
+        path: 'result',
+        name: 'result',
+        component: () => import('@/views/search/SearchRes.vue')
+      }
+    ]
   }
 ]
 

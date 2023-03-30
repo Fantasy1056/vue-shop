@@ -1,11 +1,14 @@
 <template>
   <div class="search">
-    <Header></Header>
+    <router-view></router-view>
   </div>
 </template>
 
-<script lang="ts" setup>
-import Header from '@/components/search/Header.vue'
-</script>
+<script lang="ts" setup></script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.search {
+  background-color: #f5f5f5;
+  height: 100vh;
+}
+</style>
