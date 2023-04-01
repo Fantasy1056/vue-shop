@@ -2,9 +2,9 @@
   <div class="home-like">
     <Card>猜你喜欢</Card>
     <ul>
-      <li v-for="like in likeList" :key="like.id">
+      <li v-for="like in likeList" :key="like.id" @click="goToGoods(like.id)">
         <div class="img">
-          <img :src="like.url" alt="" />
+          <img :src="like.imgUrl" alt="" />
         </div>
         <div class="info">
           <div class="desc">{{ like.name }}</div>
@@ -22,9 +22,10 @@
 import Card from './Card.vue'
 import { ref } from 'vue'
 import { reqGetLike } from '@/api'
+import router from '@/router'
 interface Like {
   id: number
-  url: string
+  imgUrl: string
   name: string
   price: number
 }
@@ -37,6 +38,15 @@ const getLike = async () => {
   if (res.code === 200) {
     likeList.value = res.data
   }
+}
+
+const goToGoods = (id: number) => {
+  router.push({
+    path: '/goods',
+    query: {
+      id
+    }
+  })
 }
 getLike()
 </script>

@@ -37,7 +37,7 @@
       <div class="product-list">
         <ul>
           <li v-for="item in searchList" :key="item.id">
-            <a href="">
+            <a @click="goToGoods(item.id)">
               <img v-lazy="item.imgUrl" alt="" />
               <p class="txt">{{ item.name }}</p>
               <div class="pb">
@@ -60,7 +60,7 @@ import { computed, ref } from 'vue'
 import { search } from '@/store/search'
 import { reqGetSearchRes } from '@/api'
 import { useRoute } from 'vue-router'
-
+import router from '@/router'
 const route = useRoute()
 const store = search()
 
@@ -116,7 +116,14 @@ const changeTabIndex = (index: number) => {
   filterIndex.value = index
   getSearchRes()
 }
-
+const goToGoods = (id: number) => {
+  router.push({
+    path: '/goods',
+    query: {
+      id
+    }
+  })
+}
 getSearchRes()
 const searchList = computed(() => store.searchResList)
 </script>

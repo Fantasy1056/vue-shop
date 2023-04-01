@@ -51,6 +51,7 @@ getTabBar()
   height: 1.0667rem;
   z-index: 999;
   background-color: #fff;
+  border-top: 1px solid #efefef;
   .tabbar {
     display: flex;
     width: 100%;

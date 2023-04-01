@@ -1,5 +1,6 @@
 import { $http } from './axios'
 interface SearchQuery {
+  id?: number
   word?: string
   type?: string
   sift?: string
@@ -25,3 +26,7 @@ export const reqGetSearchHot = () => $http.get('/search/hot')
 export const reqGetSearchRecommend = () => $http.get('/search/recommend')
 
 export const reqGetSearchRes = (query: SearchQuery) => $http.get('/search', { params: query })
+
+export const reqGetListData = () => $http.get('/list')
+
+export const reqGetUserOptions = () => $http.get('/user-options')

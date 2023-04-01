@@ -2,7 +2,7 @@
   <div class="home">
     <Header></Header>
     <TopBar></TopBar>
-    <section>
+    <section ref="home">
       <Swiper></Swiper>
       <Icons></Icons>
       <HeadLine></HeadLine>
@@ -37,6 +37,7 @@ import { reqGetXiaoqi, reqGetTea } from '@/api/index'
 import { ref } from 'vue'
 const xiaoqi = ref([])
 const tea = ref([])
+const home = ref()
 const getXiaoqi = async () => {
   const { data: res } = await reqGetXiaoqi()
 
@@ -61,11 +62,11 @@ getTea()
   display: flex;
   overflow: hidden;
   background-color: #f5f5f5;
+  overflow: scroll;
 }
 section {
-  flex: 1;
+  width: 100%;
   margin-top: 2.3467rem;
   padding-bottom: 1.0667rem;
-  overflow: scroll;
 }
 </style>

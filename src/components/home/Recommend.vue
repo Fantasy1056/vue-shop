@@ -42,6 +42,7 @@ const getHotList = async () => {
     recommendList.value = res.data
   }
 }
+
 getHotList()
 </script>
 

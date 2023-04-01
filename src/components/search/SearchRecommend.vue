@@ -9,7 +9,7 @@
     <div class="bd">
       <ul>
         <li v-for="item in searchRecommendList" :key="item.id">
-          <a href="">
+          <a @click="goToGoods(item.id)">
             <div class="pic">
               <img v-lazy="item.imgUrl" alt="" />
               <span class="tip">{{ item.tip }}</span>
@@ -28,6 +28,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { reqGetSearchRecommend } from '@/api/index'
+import router from '@/router'
 interface SearchRecommed {
   id: number
   imgUrl: string
@@ -43,6 +44,14 @@ const getSearchRecommendList = async () => {
   if (res.code === 200) {
     searchRecommendList.value = res.data
   }
+}
+const goToGoods = (id: number) => {
+  router.push({
+    path: '/goods',
+    query: {
+      id
+    }
+  })
 }
 getSearchRecommendList()
 </script>
