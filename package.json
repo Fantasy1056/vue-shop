@@ -13,6 +13,7 @@
     "mitt": "^3.0.0",
     "pinia": "^2.0.33",
     "vant": "^4.1.2",
+    "vee-validate": "^4.8.4",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vue3-lazy": "^1.0.0-alpha.1"

@@ -63,6 +63,54 @@ const routes: Array<RouteRecordRaw> = [
     path: '/goods',
     name: 'goods',
     component: () => import('@/views/Goods.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/Login.vue'),
+    meta: {
+      isShowTabBar: true,
+      tabBarIndex: 3
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'login-index',
+        component: () => import('@/views/login/Login.vue')
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('@/views/login/Register.vue')
+      },
+      {
+        path: 'loginsms',
+        name: 'loginsms',
+        component: () => import('@/views/login/LoginSms.vue')
+      }
+    ]
+  },
+  {
+    path: '/recovery',
+    name: 'recovery',
+    component: () => import('@/views/Recovery.vue'),
+    meta: {
+      isShowTabBar: true,
+      tabBarIndex: 3
+    },
+    children: [
+      {
+        path: 'finduser',
+        name: 'finduser',
+        component: () => import('@/views/recovery/FindUser.vue')
+      },
+      {
+        path: 'findpwd',
+        name: 'findpwd',
+        component: () => import('@/views/recovery/FindPassword.vue')
+
+      }
+    ]
   }
 ]
 
@@ -70,5 +118,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
-
+// router.beforeEach((to, from, next) => {
+//   if(to.path)
+// })
 export default router

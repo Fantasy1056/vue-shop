@@ -4,6 +4,7 @@
       <component :is="Component" />
     </keep-alive>
   </router-view>
+  <!-- <router-view></router-view> -->
   <TabBar v-if="isShowTabBar" :index="route.meta.tabBarIndex"></TabBar>
 </template>
 

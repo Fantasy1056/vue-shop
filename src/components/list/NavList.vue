@@ -13,12 +13,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, getCurrentInstance } from 'vue'
+import { computed, getCurrentInstance, onBeforeUnmount, onActivated } from 'vue'
 import { list } from '@/store/list'
 
 const store = list()
-
-store.listIndex = 0
 
 const _this = getCurrentInstance()
 const mitter = _this?.appContext.config.globalProperties.mitter
@@ -29,6 +27,12 @@ const changeIndex = (index: number) => {
   store.listIndex = index
   mitter.emit('index', index)
 }
+onActivated(() => {
+  store.listIndex = 0
+})
+onBeforeUnmount(() => {
+  store.listIndex = 0
+})
 </script>
 
 <style lang="less" scoped>

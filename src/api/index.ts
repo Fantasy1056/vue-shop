@@ -5,6 +5,12 @@ interface SearchQuery {
   type?: string
   sift?: string
 }
+interface Login {
+  tel?: string
+  pwd?: string
+  token?: string
+  code?: string
+}
 export const reqGetTabBar = () => $http.get('/tabbar-list')
 
 export const reqGetSwiperList = () => $http.get('/swiper-list')
@@ -30,3 +36,15 @@ export const reqGetSearchRes = (query: SearchQuery) => $http.get('/search', { pa
 export const reqGetListData = () => $http.get('/list')
 
 export const reqGetUserOptions = () => $http.get('/user-options')
+
+export const reqPostLogin = (data: Login) => $http.post('/login', data)
+
+export const reqPostLoginByCode = (data: Login) => $http.post('/loginbycode', data)
+
+export const reqPostSendCode = (tel: string) => $http.post('/sendcode', { tel })
+
+export const reqPostRegister = (data: Login) => $http.post('/register', data)
+
+export const reqPostChangePwd = (data: Login) => $http.post('/changepwd', data)
+
+export const reqPostFindUser = (data: Login) => $http.post('/finduser', data)
