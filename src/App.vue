@@ -1,11 +1,12 @@
 <template>
   <router-view v-slot="{ Component }">
     <keep-alive>
-      <component :is="Component" />
+      <component :is="Component" v-if="route.meta.keepalive" />
     </keep-alive>
+    <component :is="Component" v-if="!route.meta.keepalive" />
   </router-view>
   <!-- <router-view></router-view> -->
-  <TabBar v-if="isShowTabBar" :index="route.meta.tabBarIndex"></TabBar>
+  <TabBar v-show="isShowTabBar" :index="route.meta.tabBarIndex"></TabBar>
 </template>
 
 <script lang="ts" setup>

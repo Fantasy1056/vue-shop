@@ -24,8 +24,9 @@ const routes: Array<RouteRecordRaw> = [
     name: 'cart',
     component: () => import('@/views/Cart.vue'),
     meta: {
-      isShowTabBar: true,
-      tabBarIndex: 2
+      isShowTabBar: false,
+      tabBarIndex: 2,
+      keepalive: false
     }
   },
   {
@@ -62,7 +63,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/goods',
     name: 'goods',
-    component: () => import('@/views/Goods.vue')
+    component: () => import('@/views/Goods.vue'),
+    meta: {
+      keepalive: true
+    }
   },
   {
     path: '/login',

@@ -37,22 +37,9 @@ const heightArr = ref<number[]>([])
 
 const warp = ref()
 
-const menu = ref<HTMLElement[]>([])
-
 const store = list()
 
-// const throttle = (fn: any, delay: number) => {
-//   let valid = true
-//   return function () {
-//     if (!valid) return false
-
-//     valid = true
-//     setTimeout(() => {
-//       fn()
-//       valid = true
-//     }, delay)
-//   }
-// }
+const menu = ref<HTMLElement[]>([])
 
 const getNewTop = () => {
   const scrollHeight = parseInt(warp.value.scrollTop)

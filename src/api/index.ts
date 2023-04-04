@@ -11,6 +11,19 @@ interface Login {
   token?: string
   code?: string
 }
+interface GoodsData {
+  userid: number
+  goods_name: string
+  goods_id: number
+  goods_imgUrl: string
+  goods_price: number
+  goods_num: number
+  state: number
+  // tip: string
+  // type: string
+  // keywords: string
+  // desc: string
+}
 export const reqGetTabBar = () => $http.get('/tabbar-list')
 
 export const reqGetSwiperList = () => $http.get('/swiper-list')
@@ -48,3 +61,11 @@ export const reqPostRegister = (data: Login) => $http.post('/register', data)
 export const reqPostChangePwd = (data: Login) => $http.post('/changepwd', data)
 
 export const reqPostFindUser = (data: Login) => $http.post('/finduser', data)
+
+export const reqPostAddtoCart = (data: GoodsData) => $http.post('/addtocart', data)
+
+export const reqGetCartlist = (userid: number) => $http.get('/cartlist', { params: { userid } })
+
+export const reqPostUpdateCartList = (data: GoodsData) => $http.post('/updatecartlist', data)
+
+export const reqDeleteCartItem = (data: GoodsData) => $http.delete('/deletecartitem', { data })

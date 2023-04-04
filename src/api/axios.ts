@@ -1,16 +1,15 @@
 import axios from 'axios'
-import { showLoadingToast, closeToast } from 'vant'
-
 axios.interceptors.request.use((config) => {
-  showLoadingToast({
-    message: '加载中...',
-    duration: 0
-  })
+  const token = localStorage.getItem('token')
+
+  if (token) {
+    config.headers.Authorization = token
+  }
+
   return config
 })
 
 axios.interceptors.response.use((config) => {
-  closeToast()
   return config
 })
 

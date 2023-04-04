@@ -3,7 +3,6 @@
     <ul class="tabbar">
       <li
         :class="{ active: active === tab.active }"
-        @click="active = tab.active"
         v-for="(tab, index) in routerList"
         :key="index"
       >
@@ -28,9 +27,7 @@ interface TabBar {
   title: string
 }
 const props = defineProps(['index'])
-const active = ref(0)
-const index = computed(() => props.index)
-active.value = index.value
+const active = computed(() => props.index)
 const routerList = ref<TabBar[]>([])
 const getTabBar = async () => {
   const { data: res } = await reqGetTabBar()

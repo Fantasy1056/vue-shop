@@ -63,15 +63,23 @@
 <script lang="ts" setup>
 import Header from '@/components/goods/Header.vue'
 import ActionBar from '@/components/goods/ActionBar.vue'
-import { ref, getCurrentInstance, onActivated } from 'vue'
-import { reqGetSearchRes } from '@/api'
+import { ref, getCurrentInstance, onActivated, onMounted } from 'vue'
+import { reqGetSearchRes, reqPostAddtoCart } from '@/api'
 import { useRoute } from 'vue-router'
+import { user } from '@/store/user'
+import { cart } from '@/store/cart'
+import router from '@/router'
+import { showFailToast, showSuccessToast } from 'vant'
 interface GoodsData {
   id: number
   desc: string
   imgUrl: string
   name: string
   price: number
+  tip: string
+  type: string
+  keywords: string
+  sales: number
 }
 const goodsData = ref<GoodsData[]>([])
 const route = useRoute()
@@ -79,6 +87,7 @@ const goods = ref()
 const _this = getCurrentInstance()
 const mitter = _this?.appContext.config.globalProperties.mitter
 const id = ref(parseInt(route.query.id as any))
+const store = user()
 
 onActivated(() => {
   if (id.value !== (route.query.id as any)) {
@@ -102,6 +111,42 @@ const changeHeader = () => {
     mitter.emit('show', { state: true, pos: opacity })
   }
 }
+
+onMounted(() => {
+  mitter.on('add', async () => {
+    const itemData = {
+      userid: store.userData.id,
+      goods_name: goodsData.value[0].name,
+      goods_imgUrl: goodsData.value[0].imgUrl,
+      goods_num: 1,
+      goods_price: goodsData.value[0].price,
+      goods_id: goodsData.value[0].id,
+      state: 1
+      // desc: goodsData.value[0].desc,
+      // keywords: goodsData.value[0].keywords,
+      // type: goodsData.value[0].type,
+      // tip: goodsData.value[0].tip,
+      // sales: goodsData.value[0].sales
+    }
+
+    if (!store.loginState) {
+      return router.push('/login/loginsms')
+    }
+
+    try {
+      const { data: res } = await reqPostAddtoCart(itemData)
+
+      if (res.code === 200) {
+        showSuccessToast('添加成功！')
+        cart().getCartList(store.userData.id)
+      } else {
+        showFailToast('添加失败！')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  })
+})
 </script>
 
 <style lang="less" scoped>

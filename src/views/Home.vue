@@ -32,12 +32,19 @@ import Like from '@/components/home/Like.vue'
 import Card from '@/components/home/Card.vue'
 import SmallBd from '@/components/home/SmallBd.vue'
 import BannerSwiper from '@/components/home/BannerSwiper.vue'
-
 import { reqGetXiaoqi, reqGetTea } from '@/api/index'
 import { ref } from 'vue'
+import { user } from '@/store/user'
+
+const store = user()
 const xiaoqi = ref([])
 const tea = ref([])
 const home = ref()
+
+if (!store.loginState) {
+  store.initUser()
+}
+
 const getXiaoqi = async () => {
   const { data: res } = await reqGetXiaoqi()
 

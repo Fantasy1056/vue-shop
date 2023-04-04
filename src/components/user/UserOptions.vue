@@ -48,7 +48,7 @@ getUserOptions()
 <style lang="less" scoped>
 .user-opitons {
   width: 100%;
-
+  padding-bottom: 1.0667rem;
   .option {
     margin-bottom: 0.2667rem;
     background-color: #fff;

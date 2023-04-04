@@ -33,10 +33,13 @@
 <script lang="ts" setup>
 import router from '@/router'
 import { user } from '@/store/user'
+import { cart } from '@/store/cart'
 import { computed } from '@vue/reactivity'
 import { showConfirmDialog, showSuccessToast } from 'vant'
 
 const store = user()
+
+const cartStore = cart()
 
 const userData = computed(() => store.userData)
 
@@ -51,6 +54,7 @@ const logout = () => {
       showSuccessToast('退出成功！')
       localStorage.removeItem('token')
       store.loginState = false
+      cartStore.clearCartList()
       router.push('/login/loginsms')
     })
     .catch(() => {
