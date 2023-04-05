@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
 import router from '@/router'
-import Header from '../common/Header.vue'
+import Header from '@/components/common/Header.vue'
 import { address } from '@/store/address'
 import { computed } from 'vue'
 

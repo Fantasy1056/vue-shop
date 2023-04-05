@@ -34,12 +34,15 @@
 import router from '@/router'
 import { user } from '@/store/user'
 import { cart } from '@/store/cart'
+import { address } from '@/store/address'
 import { computed } from '@vue/reactivity'
 import { showConfirmDialog, showSuccessToast } from 'vant'
 
 const store = user()
 
 const cartStore = cart()
+
+const addressStore = address()
 
 const userData = computed(() => store.userData)
 
@@ -55,6 +58,7 @@ const logout = () => {
       localStorage.removeItem('token')
       store.loginState = false
       cartStore.clearCartList()
+      addressStore.clearAddressList()
       router.push('/login/loginsms')
     })
     .catch(() => {

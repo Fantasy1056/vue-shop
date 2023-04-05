@@ -69,6 +69,15 @@ export const cart = defineStore('cart', {
       })
 
       return res
+    },
+    checkedItems() {
+      const resArr = <CartList[]>[]
+      this.cartList.forEach((item: CartList) => {
+        if (item.state) {
+          resArr.push(item)
+        }
+      })
+      return resArr
     }
   }
 })

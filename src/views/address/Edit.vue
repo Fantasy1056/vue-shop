@@ -76,7 +76,7 @@
 </template>
 
 <script lang="ts" setup>
-import Header from '../common/Header.vue'
+import Header from '@/components/common/Header.vue'
 import { area } from '@/assets/city_data2017_element.js'
 import { ref, reactive } from 'vue'
 import { showToast } from 'vant'

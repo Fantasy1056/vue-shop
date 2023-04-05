@@ -88,3 +88,5 @@ export const reqGetAddressById = (id: number) => $http.get('/getaddress?id=' + i
 export const reqPostEditAddress = (data: AddressInfo) => $http.post('/editaddress', data)
 
 export const reqDeleteAddress = (id: number) => $http.delete('/deleteaddress', { data: { id } })
+
+export const reqPostChangeDefaultAdd = (data: AddressInfo) => $http.post('/changedefaultAdd', data)

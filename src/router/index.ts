@@ -124,12 +124,17 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'show',
         name: 'show',
-        component: () => import('@/components/address/Show.vue')
+        component: () => import('@/views/address/Show.vue')
       },
       {
         path: 'edit/:id',
         name: 'edit',
-        component: () => import('@/components/address/Edit.vue')
+        component: () => import('@/views/address/Edit.vue')
+      },
+      {
+        path: 'select',
+        name: 'select',
+        component: () => import('@/views/address/Select.vue')
       }
     ],
     meta: {
@@ -138,6 +143,16 @@ const routes: Array<RouteRecordRaw> = [
       tabBarIndex: -1
     },
     redirect: '/address/show'
+  },
+  {
+    path: '/checkout',
+    name: 'checktout',
+    component: () => import('@/views/Checkout.vue'),
+    meta: {
+      keepalive: false,
+      isShowTabBar: false,
+      tabBarIndex: -1
+    }
   }
 ]
 
@@ -145,7 +160,17 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
-// router.beforeEach((to, from, next) => {
-//   if(to.path)
-// })
+router.beforeEach((to, from, next) => {
+  const pathArr = ['/cart', '/checkout', '/address/show', '/address/edit', '/address/select']
+  const token = localStorage.getItem('token')
+  if (pathArr.indexOf(to.path) !== -1) {
+    if (token) {
+      next()
+    } else {
+      next('/login/loginsms')
+    }
+  } else {
+    next()
+  }
+})
 export default router

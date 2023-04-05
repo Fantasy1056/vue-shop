@@ -127,6 +127,7 @@ const login = async () => {
       showSuccessToast(res.data.msg)
       store.userData = res.data.data
       localStorage.setItem('token', res.data.data.token)
+      store.token = res.data.data.token
       store.loginState = true
       router.push('/user')
     } else {

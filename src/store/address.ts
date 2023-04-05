@@ -25,11 +25,8 @@ export const address = defineStore('address', {
 
         if (res.code === 200) {
           this.addressList = res.data
-          showToast({
-            type: 'success',
-            message: res.msg
-          })
         } else {
+          this.clearAddressList()
           showToast({
             type: 'fail',
             message: res.msg
@@ -38,6 +35,15 @@ export const address = defineStore('address', {
       } catch (error) {
         console.log(error)
       }
+    },
+    clearAddressList() {
+      this.addressList = []
+    }
+  },
+  getters: {
+    defaultAddress(): AddressList[] {
+      const res: AddressList[] = this.addressList.filter(item => item.isDefault)
+      return res
     }
   }
 })

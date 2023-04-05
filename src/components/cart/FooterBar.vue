@@ -19,7 +19,7 @@
       </p>
     </div>
     <div class="topay">
-      <a href="">去结算</a>
+      <router-link to="/checkout">去结算</router-link>
     </div>
   </div>
 </template>
