@@ -14,9 +14,6 @@ html, body, #app {
 ul {
   list-style: none;
 }
-li {
-  float: left;
-}
  a {
   text-decoration: none;
  }

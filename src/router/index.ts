@@ -115,6 +115,29 @@ const routes: Array<RouteRecordRaw> = [
 
       }
     ]
+  },
+  {
+    path: '/address',
+    name: 'address',
+    component: () => import('@/views/Address.vue'),
+    children: [
+      {
+        path: 'show',
+        name: 'show',
+        component: () => import('@/components/address/Show.vue')
+      },
+      {
+        path: 'edit/:id',
+        name: 'edit',
+        component: () => import('@/components/address/Edit.vue')
+      }
+    ],
+    meta: {
+      keepalive: false,
+      isShowTabBar: true,
+      tabBarIndex: -1
+    },
+    redirect: '/address/show'
   }
 ]
 

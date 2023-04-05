@@ -24,6 +24,15 @@ interface GoodsData {
   // keywords: string
   // desc: string
 }
+interface AddressInfo {
+  add_id?: number
+  userid?: number
+  consignee: string
+  moblie: string
+  area: string
+  address: string
+  isDefault: boolean | number
+}
 export const reqGetTabBar = () => $http.get('/tabbar-list')
 
 export const reqGetSwiperList = () => $http.get('/swiper-list')
@@ -69,3 +78,13 @@ export const reqGetCartlist = (userid: number) => $http.get('/cartlist', { param
 export const reqPostUpdateCartList = (data: GoodsData) => $http.post('/updatecartlist', data)
 
 export const reqDeleteCartItem = (data: GoodsData) => $http.delete('/deletecartitem', { data })
+
+export const reqPostAddNewAdd = (data: AddressInfo) => $http.post('/addnewaddress', data)
+
+export const reqGetAddList = (userid: number) => $http.get('/addresslist', { params: { userid } })
+
+export const reqGetAddressById = (id: number) => $http.get('/getaddress?id=' + id)
+
+export const reqPostEditAddress = (data: AddressInfo) => $http.post('/editaddress', data)
+
+export const reqDeleteAddress = (id: number) => $http.delete('/deleteaddress', { data: { id } })

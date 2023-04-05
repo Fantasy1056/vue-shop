@@ -4,7 +4,7 @@
       <h1>{{ option.title }}</h1>
       <ul>
         <li v-for="li in option.data" :key="li.id">
-          <a href="">
+          <a @click="li.title === '地址管理' && $router.push('/address/show')">
             <svg
               class="icon"
               aria-hidden="true"
