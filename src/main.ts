@@ -17,7 +17,7 @@ app.use(Tabs)
 app.component('Form', Form).component('Field', Field).component('ErrorMessage', ErrorMessage)
 app.use(Tab).use(Swipe).use(SwipeItem).use(ActionBar).use(ActionBarButton).use(ActionBarIcon).use(Icon).use(Empty).use(Popup).use(Picker).use(Switch)
 app.use(lazyPlugin, {
-  loading: require('../public/005HSe78b613dea389e2d.gif'),
-  error: require('../public/00WXHa048b500376e3103.gif')
+  loading: require('../public/loading.jpg'),
+  error: require('../public/error.jpg')
 })
 app.mount('#app')
