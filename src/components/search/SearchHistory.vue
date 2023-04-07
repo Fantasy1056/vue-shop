@@ -29,10 +29,11 @@
 import { ref } from 'vue'
 import router from '@/router'
 import { showConfirmDialog, showToast } from 'vant'
+// 获取本地存储的历史数据
 const historyList = ref<string[]>(
   JSON.parse(localStorage.getItem('history') as string) || []
 )
-
+// 清除搜素记录方法
 const clearHistory = () => {
   showConfirmDialog({
     title: '警告',
@@ -46,7 +47,7 @@ const clearHistory = () => {
       showToast('删除取消')
     })
 }
-
+// 点击历史搜素的tag,跳转到搜素结果页,携带tag的内容
 const searchByTag = (word: string) => {
   router.push({
     name: 'result',

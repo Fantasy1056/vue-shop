@@ -62,10 +62,13 @@ import { reqGetSearchRes } from '@/api'
 import { useRoute } from 'vue-router'
 import router from '@/router'
 const route = useRoute()
+// 搜素数据的仓库
 const store = search()
-
+// 搜素的结果列表
+const searchList = computed(() => store.searchResList)
+// 顶部tabbar当前高亮的index
 const filterIndex = ref(0)
-
+// 顶部tabbar的数据
 const tabData = ref([
   {
     type: 'id',
@@ -83,39 +86,47 @@ const tabData = ref([
     title: '销量'
   }
 ])
-
+// 商品排序方式的查询数据
 const queryData = ref({
   word: route.query.q as string,
   type: '',
   sift: ''
 })
-
+// 发起请求根据路由携带关键字获取商品搜素结果
 const getSearchRes = async () => {
   const { data: res } = await reqGetSearchRes(queryData.value)
 
   store.searchResList = res.data
 }
-
+// 顶部tabbar点击触发的方法
 const changeTabIndex = (index: number) => {
+  // index为0,点击的是综合排序,直接获取默认展示的数据
   if (index === 0) {
     queryData.value.type = ''
     queryData.value.sift = ''
     filterIndex.value = index
     return getSearchRes()
   }
+  // 先将index对应的sift属性修改asc,升序
   tabData.value[index].sift = 'asc'
+  // 如果当前点击的tabbar和上一次点击的index一致
   if (index === filterIndex.value) {
+    // 切换升序|切换降序
     if (tabData.value[index].sift === 'asc') {
       tabData.value[index].sift = 'desc'
     } else {
       tabData.value[index].sift = 'asc'
     }
   }
+  // 查询数据的方式和排序等于当前点击的方式和排序
   queryData.value.type = tabData.value[index].type
   queryData.value.sift = tabData.value[index].sift
+  // index修改为当前点击的index高亮对应的tabbar
   filterIndex.value = index
+  // 获取排序后的数据
   getSearchRes()
 }
+// 点击商品跳转到商品页面，携带id
 const goToGoods = (id: number) => {
   router.push({
     path: '/goods',
@@ -125,7 +136,6 @@ const goToGoods = (id: number) => {
   })
 }
 getSearchRes()
-const searchList = computed(() => store.searchResList)
 </script>
 
 <style lang="less" scoped>

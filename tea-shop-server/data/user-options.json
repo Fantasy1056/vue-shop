@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "个人中心",
+    "data": [
+      {
+        "id": 101,
+        "title": "我的拼团",
+        "icon": "zudui",
+        "iconColor": "#ff7e45"
+      },
+      {"id": 102,
+      "title": "我的收藏",
+      "icon": "star",
+      "iconColor": "#ffce54"
+
+      },
+      {"id": 103,
+      "title": "地址管理",
+      "icon": "dizhi",
+      "iconColor": "#ff4b4b"
+
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "优惠福利",
+    "data": [
+      {
+        "id": 201,
+        "title": "优惠券",
+        "icon": "youhuiquan",
+        "iconColor": "#ff774f"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "专属服务",
+    "data": [
+      {
+        "id": 301,
+        "title": "我的客服",
+        "icon": "kefu",
+        "iconColor": "#00c670"
+      },
+      {"id": 302,
+      "title": "意见箱",
+      "icon": "24gl-bubbleDots3",
+      "iconColor": "#b1c937"
+
+      },
+      {"id": 303,
+      "title": "加入茶师",
+      "icon": "jiarubanji",
+      "iconColor": "#95abf3"
+
+      }
+    ]
+  }
+]

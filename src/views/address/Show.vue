@@ -35,11 +35,11 @@ import router from '@/router'
 import Header from '@/components/common/Header.vue'
 import { address } from '@/store/address'
 import { computed } from 'vue'
-
+// 地址数据仓库
 const store = address()
-
+// 地址列表数据
 const addressList = computed(() => store.addressList)
-
+// 编辑地址跳转方法,根据地址是否为默认地址,决定是否携带参数
 const editAddress = (id: number, isDefault: number) => {
   if (isDefault) {
     router.push({

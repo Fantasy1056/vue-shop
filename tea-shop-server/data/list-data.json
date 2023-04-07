@@ -1,0 +1,328 @@
+[
+  {
+    "id": 1,
+    "title": "推荐",
+    "data": [
+      {
+        "id":10,
+        "title": "推荐",
+        "list": [
+          {
+            "id": 101,
+            "img": "http://img.tea7.com/0011478_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "紫砂壶"
+          },
+          {
+            "id": 102,
+            "img": "http://img.tea7.com/0011446_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "铁观音"
+          },
+          {
+            "id": 103,
+            "img": "http://img.tea7.com/0011372_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "金骏眉"
+          },
+          {
+            "id": 104,
+            "img": "http://img.tea7.com/0011447_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "武夷岩茶"
+          },
+          {
+            "id": 105,
+            "img": "http://img.tea7.com/0011479_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "龙井"
+          },
+          {
+            "id": 106,
+            "img": "http://img.tea7.com/0011450_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "云南滇红"
+          },
+          {
+            "id": 107,
+            "img": "http://img.tea7.com/0011239_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "建盏"
+          },
+          {
+            "id": 108,
+            "img": "http://img.tea7.com/0011471_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "功夫茶具"
+          }
+
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "新品",
+    "data": [
+      {
+        "id": 20,
+        "title": "新品",
+        "list": [
+          {
+            "id": 201,
+            "img": "http://img.tea7.com/0169079_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "5月新品"
+          }
+          ,
+          {
+            "id": 202,
+            "img": "http://img.tea7.com/0170013_0.png?x-oss-process=image/resize,w_150",
+            "title": "6月新品"
+
+          },
+          {
+            "id": 203,
+            "img": "http://img.tea7.com/0172629_0.png?x-oss-process=image/resize,w_150",
+            "title": "7月新品"
+
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "习茶",
+    "data": [
+      {
+        "id": 30,
+        "title": "习茶",
+        "list": [
+          {
+            "id": 301,
+            "img": "http://img.tea7.com/0169078_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "习茶"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "绿茶",
+    "data": [
+      {
+        "id": 40,
+        "title": "绿茶",
+        "list": [
+          {
+            "id": 401,
+            "img": "http://img.tea7.com/0011479_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "龙井"
+          },
+          {
+            "id": 402,
+            "img": "http://img.tea7.com/0011444_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "黄山毛峰"
+          },
+          {
+            "id": 403,
+            "img": "http://img.tea7.com/0011445_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "碧螺春"
+          },
+          {
+            "id": 404,
+            "img": "http://img.tea7.com/0153803_0.png?x-oss-process=image/resize,w_150",
+            "title": "雀舌"
+          },
+          {
+            "id": 405,
+            "img": "http://img.tea7.com/0034477_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "太平猴魁"
+          },
+          {
+            "id": 406,
+            "img": "http://img.tea7.com/0057822_0.png?x-oss-process=image/resize,w_150",
+            "title": "珍稀白茶"
+          },
+          {
+            "id": 407,
+            "img": "http://img.tea7.com/0153804_0.png?x-oss-process=image/resize,w_150",
+            "title": "六安瓜片"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "乌龙",
+    "data": [
+      {
+        "id": 50,
+        "title": "乌龙",
+        "list": [
+          {
+            "id": 501,
+            "img": "http://img.tea7.com/0165422_0.png?x-oss-process=image/resize,w_150",
+            "title": "永春佛手"
+          },
+          {
+            "id": 502,
+            "img": "http://img.tea7.com/0011446_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "铁观音"
+          },
+          {
+            "id": 503,
+            "img": "http://img.tea7.com/0011447_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "武夷岩茶"
+          },
+          {
+            "id": 504,
+            "img": "http://img.tea7.com/0011448_0.jpeg?x-oss-process=image/resize,w_150",
+            "title":"漳平水仙"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "红茶",
+    "data": [
+      {
+        "id": 60,
+        "title": "红茶",
+        "list": [
+          {
+            "id": 601,
+            "img": "http://img.tea7.com/0167288_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "英德红茶"
+          },
+          {
+            "id": 602,
+            "img": "http://img.tea7.com/0167289_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "坦洋工夫"
+          },
+          {
+            "id": 603,
+            "img": "http://img.tea7.com/0011372_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "金骏眉"
+          },
+          {
+            "id": 604,
+            "img": "http://img.tea7.com/0011449_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "正山小种"
+          },
+          {
+            "id": 605,
+            "img": "http://img.tea7.com/0011450_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "云南滇红"
+          },
+          {
+            "id": 606,
+            "img": "http://img.tea7.com/0011451_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "祁门红茶"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id":7 ,
+    "title": "白茶",
+    "data": [
+      {
+        "id": 70,
+        "title": "白茶",
+        "list": [
+          {
+            "id": 701,
+            "img": "http://img.tea7.com/0011455_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "白牡丹"
+          },
+          {
+            "id": 702,
+            "img": "http://img.tea7.com/0011469_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "牡丹王"
+          },
+          {
+            "id": 703,
+            "img": "http://img.tea7.com/0011456_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "白毫银针"
+          },
+          {
+            "id": 704,
+            "img": "http://img.tea7.com/0011454_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "寿眉"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "普洱",
+    "data": [
+      {
+        "id": 80,
+        "title": "普洱",
+        "list": [
+          {
+            "id": 801,
+            "img": "http://img.tea7.com/0011457_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "生茶"
+          },{
+            "id": 802,
+            "img": "http://img.tea7.com/0011458_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "熟茶"
+          }
+
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "花茶",
+    "data": [
+      {
+        "id": 90,
+        "title": "花茶",
+        "list": [
+          {
+            "id": 901,
+            "img": "http://img.tea7.com/0011459_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "花茶"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "茶具",
+    "data": [
+      {
+        "id": 100,
+        "title": "茶具",
+        "list": [
+          {
+            "id": 101,
+            "img": "http://img.tea7.com/0011478_0.jpeg?x-oss-process=image/resize,w_150",
+            "title": "紫砂壶"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "手艺",
+    "data": [
+      {
+        "id": 110,
+        "title": "手艺",
+        "list": [
+          {
+            "id": 1101,
+            "img": "http://img.tea7.com/0011240_0.png?x-oss-process=image/resize,w_150",
+            "title": "根雕"
+          }
+        ]
+      }
+    ]
+  }
+]

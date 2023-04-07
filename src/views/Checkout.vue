@@ -2,6 +2,7 @@
   <div class="checkout">
     <Header>提交订单</Header>
     <section id="page">
+      <!-- 地址信息 -->
       <div class="address">
         <h3>收货信息：</h3>
         <div class="bd">
@@ -20,6 +21,7 @@
           </router-link>
         </div>
       </div>
+      <!-- 支付方式 -->
       <div class="pay">
         <div class="pay-container">
           <div class="pay-hd">
@@ -34,6 +36,7 @@
           </div>
         </div>
       </div>
+      <!-- 订单商品列表 -->
       <div class="cart_list">
         <div id="shop_list">
           <div class="shop_info"></div>
@@ -61,6 +64,7 @@
           </div>
         </div>
       </div>
+      <!-- 支付详情 -->
       <div class="pay_detail">
         <h3>账单明细</h3>
         <dl>
@@ -83,6 +87,7 @@
         </dl>
       </div>
     </section>
+    <!-- 结算底部栏 -->
     <div class="checkout_footer">
       <div class="footer_box">
         <div class="total_count">

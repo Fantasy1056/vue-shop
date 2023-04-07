@@ -26,44 +26,53 @@
 <script lang="ts" setup>
 import { computed, ref, onMounted, getCurrentInstance, nextTick } from 'vue'
 import { list } from '@/store/list'
-
+// 获取当前组件实例
 const _this = getCurrentInstance()
+// 全局事件总线
 const mitter = _this?.appContext.config.globalProperties.mitter
+// 列表数据
 const listData = computed(() => store.listData)
-
-let height = 0
-
+// 每一个nav-item距离页面顶部的距离数组
 const heightArr = ref<number[]>([])
-
+// nav-item的父元素warp
 const warp = ref()
-
+/// 列表数据仓库
 const store = list()
-
+// nav-item元素数组
 const menu = ref<HTMLElement[]>([])
-
+// 监听页面滚动触发的方法
 const getNewTop = () => {
+  // 当前滚动的距离
   const scrollHeight = parseInt(warp.value.scrollTop)
+  // 根据滚动距离查找距离顶部高度数组符合条件的高度的index
   const res = heightArr.value.findIndex((h, index, arr) => {
+    // 如果当前下标的高度值小于滚动距离，并且当前下标+1大于滚动距离则返回当前下标
     return scrollHeight > h && scrollHeight < arr[index + 1]
   })
   if (res !== -1) {
+    // 返回的下标不为-1时，将仓库listIndex修改为返回的下标
+    // 列表侧边栏组件就会根据改变后的下标，给对应侧边栏列表对应下标的选项高亮显示
     store.listIndex = res
   }
 }
-
+// 仓库的获取列表数据方法
 store.getListData()
+// 组件全部挂在完毕
 onMounted(() => {
+  // 设置个定时器，不然有可能会获取不到元素
   setTimeout(() => {
-    heightArr.value.push(height)
+    // 遍历nav-item的数组，获取每个nav-item距离顶部的高度
     menu.value.forEach((element: HTMLElement) => {
-      height += element.clientHeight
-      heightArr.value.push(height)
+      // 因为header组件是fixed定位，所以距离顶部的高度要减去header组件的高度
+      heightArr.value.push(element.offsetTop - 40)
     })
   }, 100)
-
+  // 监听响应列表侧边栏组件的自定义事件
   mitter.on('index', async (val: number) => {
     nextTick(() => {
+      // 当前组件元素存在时
       if (warp.value) {
+        // 将页面滚动高度修改为：距离顶部高度数组【自定义事件发送来的下标】
         warp.value.scrollTop = heightArr.value[val]
       }
     })

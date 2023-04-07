@@ -1,8 +1,12 @@
 <template>
+  <!-- 搜索主页头部 -->
   <Header></Header>
   <section id="page">
+    <!-- 搜索历史 -->
     <SearchHistory></SearchHistory>
+    <!-- 热门搜索 -->
     <HotSearch></HotSearch>
+    <!-- 搜索推荐 -->
     <SearchRecommed></SearchRecommed>
   </section>
 </template>

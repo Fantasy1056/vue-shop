@@ -26,7 +26,7 @@ interface SearchHot {
   content: string
 }
 const searchHotList = ref<SearchHot[]>([])
-
+// 发起请求获取热门搜索数据
 const getSearchHotList = async () => {
   const { data: res } = await reqGetSearchHot()
 
@@ -34,6 +34,7 @@ const getSearchHotList = async () => {
     searchHotList.value = res.data
   }
 }
+// 点击热门搜索tag跳转到搜素结果页
 const searchByTag = (word: string) => {
   router.push({
     name: 'result',

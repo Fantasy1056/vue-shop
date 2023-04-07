@@ -21,19 +21,24 @@ import router from '@/router'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-
+// 如果当前路由存在q属性则说明当前路由是主页搜索跳转来的，则输入框默认展示搜索的内容，否则为空
 const keyWord = ref((route.query.q as string) || '')
-
+// 获取本地存储的历史数据
 const historyList = ref<string[]>(
   JSON.parse(localStorage.getItem('history') as string) || []
 )
-
+// 搜索方法
 const searchTea = () => {
+  // keyWord关键字不为空时
   if (keyWord.value !== '') {
+    // 向历史数据数组头部添加搜索的关键字
     historyList.value.unshift(keyWord.value)
+    // 去重
     const newArr = new Set(historyList.value)
+    // 再把新的历史数据数组保存到本地存储
     localStorage.setItem('history', JSON.stringify(Array.from(newArr)))
   }
+  // 跳转到搜索结果页，携带搜索关键字
   router.push({
     path: '/search/result',
     query: {

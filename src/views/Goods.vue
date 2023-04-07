@@ -81,39 +81,55 @@ interface GoodsData {
   keywords: string
   sales: number
 }
-const goodsData = ref<GoodsData[]>([])
-const route = useRoute()
-const goods = ref()
-const _this = getCurrentInstance()
-const mitter = _this?.appContext.config.globalProperties.mitter
-const id = ref(parseInt(route.query.id as any))
-const store = user()
 
+const route = useRoute()
+// 当前组件最外层的dom实例
+const goods = ref()
+// 用户数据store
+const store = user()
+// 商品数据
+const goodsData = ref<GoodsData[]>([])
+// 当前组件实例
+const _this = getCurrentInstance()
+// 全局事件总线
+const mitter = _this?.appContext.config.globalProperties.mitter
+// 路由携带的id值
+const id = ref(parseInt(route.query.id as any))
+// 当keepalive组件进入时触发的方法
 onActivated(() => {
+  // 如果当前存储的id不等于再次进入携带的路由参数id
   if (id.value !== (route.query.id as any)) {
+    // 保存新的id
     id.value = route.query.id as any
+    // 重新获取商品数据
     getGoodsData()
   }
 })
 
-let opacity = 0
+// 根据路由参数id获取当前商品数据
 const getGoodsData = async () => {
   const { data: res } = await reqGetSearchRes({ id: id.value })
   goodsData.value = res.data
 }
-
+let opacity = 0
+// 当前页面滚动触发的方法
 const changeHeader = () => {
+  // 获取滚动距离
   const scroll = goods.value.scrollTop
+  // 透明度等于滚动距离/180 如果大于1结果只等于1
   opacity = scroll / 180 > 1 ? 1 : scroll / 180
+  // 滚动距离大于50,发送自定义事件通知header改变展示的内容和切换的透明度
   if (scroll >= 50) {
     mitter.emit('show', { state: false, pos: opacity })
   } else {
     mitter.emit('show', { state: true, pos: opacity })
   }
 }
-
+// 页面挂载完毕触发的方法
 onMounted(() => {
+  // 当底部栏添加购物车的自定义事件触发后
   mitter.on('add', async () => {
+    // 整理添加到购物车的商品的数据
     const itemData = {
       userid: store.userData.id,
       goods_name: goodsData.value[0].name,
@@ -122,22 +138,19 @@ onMounted(() => {
       goods_price: goodsData.value[0].price,
       goods_id: goodsData.value[0].id,
       state: 1
-      // desc: goodsData.value[0].desc,
-      // keywords: goodsData.value[0].keywords,
-      // type: goodsData.value[0].type,
-      // tip: goodsData.value[0].tip,
-      // sales: goodsData.value[0].sales
     }
-
+    // 如果没登陆跳转到登陆页面
     if (!store.loginState) {
       return router.push('/login/loginsms')
     }
 
     try {
+      // 发起请求添加到购物车
       const { data: res } = await reqPostAddtoCart(itemData)
 
       if (res.code === 200) {
         showSuccessToast('添加成功！')
+        // 添加成功后,调用获取购物车方法,更新购物车数据
         cart().getCartList(store.userData.id)
       } else {
         showFailToast('添加失败！')

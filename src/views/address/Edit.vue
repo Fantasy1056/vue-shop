@@ -100,17 +100,17 @@ interface AddressInfo {
   isDefault: boolean | number
   add_id?: number
 }
-
+// 用户数据仓库
 const userStore = user()
-
+// 省市区选择弹出框状态
 const show = ref(false)
 
 const route = useRoute()
-
+// 当前路由的params携带的id参数
 const id = parseInt(route.params.id as string)
-
+// 当前路由携带的query isDefault参数
 const isDefault = parseInt(route.query.isDefault as string)
-
+// 表单绑定数据
 const formData = reactive<AddressInfo>({
   userid: userStore.userData.id,
   consignee: '',
@@ -120,19 +120,22 @@ const formData = reactive<AddressInfo>({
   isDefault: false,
   add_id: id
 })
-
+// vant省市区选择器的option,修改key的指定
 const customFieldName = {
   text: 'label',
   value: 'value',
   children: 'children'
 }
-
+// 根据id获取地址数据方法
 const getAddressById = async () => {
+  // 如果id不为0，则当前页面为编辑已存在的地址
   if (id !== 0) {
     try {
+      // 发起请求获取地址数据
       const { data: res } = await reqGetAddressById(id)
 
       if (res.code === 200) {
+        // 保存地址数据到formData
         formData.moblie = res.data.moblie
         formData.address = res.data.address
         formData.consignee = res.data.consignee
@@ -148,8 +151,9 @@ const getAddressById = async () => {
     }
   }
 }
-
+// 新增地址数据
 const saveAddress = async () => {
+  // 如果表单数据不完整，提示错误信息
   if (
     !formData.address ||
     !formData.area ||
@@ -162,7 +166,9 @@ const saveAddress = async () => {
     })
   }
   try {
+    // 把isDefault修改为number类型，因为mysql不认识boolean
     formData.isDefault = formData.isDefault ? 1 : 0
+    // 发起请求新增地址数据
     const { data: res } = await reqPostAddNewAdd(formData)
 
     if (res.code === 200) {
@@ -170,6 +176,7 @@ const saveAddress = async () => {
         type: 'success',
         message: res.msg
       })
+      // 保存成功跳转到地址展示页
       router.push('/address/show')
     } else {
       showToast({
@@ -181,7 +188,7 @@ const saveAddress = async () => {
     console.log(error)
   }
 }
-
+// 编辑地址数据
 const editAddress = async () => {
   if (
     !formData.address ||
@@ -195,13 +202,16 @@ const editAddress = async () => {
     })
   }
   try {
+    // 把isDefault修改为number类型，因为mysql不认识boolean
     formData.isDefault = formData.isDefault ? 1 : 0
+    // 发起请求保存地址数据
     const { data: res } = await reqPostEditAddress(formData)
     if (res.code === 200) {
       showToast({
         type: 'success',
         message: res.msg
       })
+      // 保存成功跳转到地址展示页
       router.push('/address/show')
     } else {
       showToast({
@@ -213,12 +223,14 @@ const editAddress = async () => {
     console.log(error)
   }
 }
-
+// 省市区选择框确认后的方法
 const confirm = (val: any) => {
+  // 关闭选择框
   show.value = false
+  // 保存选择后的地址数据
   formData.area = val.selectedValues.join(' ')
 }
-
+// 根据id删除地址
 const deleteAddress = async () => {
   try {
     const { data: res } = await reqDeleteAddress(id)

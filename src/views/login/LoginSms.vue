@@ -77,6 +77,7 @@ import { reqPostLoginByCode } from '@/api/index'
 import { user } from '@/store/user'
 
 const store = user()
+// 表单绑定的数据
 const formData = reactive({
   moblie: '',
   msgCode: '',
@@ -85,7 +86,7 @@ const formData = reactive({
 
 const codeTime = ref(10)
 const btnState = ref(false)
-// const timer: any = ref(null)
+// 表单验证规则
 const rules = {
   moblie(value: string) {
     if (!moblieTest.test(value)) {
@@ -101,23 +102,10 @@ const rules = {
   }
 }
 
-// const sendCode = async () => {
-//   if (moblieTest.test(formData.moblie)) {
-//     btnState.value = true
-//     timer.value = setInterval(() => {
-//       codeTime.value--
-//     }, 1000)
-//     try {
-//       const { data: res } = await reqPostSendCode(formData.moblie)
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   } else {
-//     showFailToast('手机号码格式不正确')
-//   }
-// }
+// 登陆方法
 const login = async () => {
   try {
+    // 发起请求携带表单数据登录
     const { data: res } = await reqPostLoginByCode({
       code: formData.msgCode,
       tel: formData.moblie
@@ -125,10 +113,15 @@ const login = async () => {
 
     if (res.code === 200) {
       showSuccessToast(res.data.msg)
+      // 仓库存储用户数据
       store.userData = res.data.data
+      // 本地存储token
       localStorage.setItem('token', res.data.data.token)
-      store.token = res.data.data.token
+      // 登陆状态为true
       store.loginState = true
+      // 仓库存储token
+      store.token = res.data.data.token
+      // 跳转到用户页面
       router.push('/user')
     } else {
       store.loginState = false
@@ -148,6 +141,22 @@ const login = async () => {
 //     }
 //   }
 // )
+
+// const sendCode = async () => {
+//   if (moblieTest.test(formData.moblie)) {
+//     btnState.value = true
+//     timer.value = setInterval(() => {
+//       codeTime.value--
+//     }, 1000)
+//     try {
+//       const { data: res } = await reqPostSendCode(formData.moblie)
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   } else {
+//     showFailToast('手机号码格式不正确')
+//   }
+// }
 </script>
 
 <style lang="less" scoped>

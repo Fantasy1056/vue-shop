@@ -16,20 +16,20 @@
 import { computed, getCurrentInstance, onBeforeUnmount, onActivated } from 'vue'
 import { list } from '@/store/list'
 
+// 列表数据仓库
 const store = list()
-
+// 获取当前组件实例
 const _this = getCurrentInstance()
+// 全局事件总线
 const mitter = _this?.appContext.config.globalProperties.mitter
-
+// 列表数据
 const listData = computed(() => store.listData)
-
+// 点击侧边栏某一项时，将仓库的listIndex修改为点击的index，并发送自定义事件通知列表内容组件
 const changeIndex = (index: number) => {
   store.listIndex = index
   mitter.emit('index', index)
 }
-onActivated(() => {
-  store.listIndex = 0
-})
+// 组件销毁之前将仓库listIndex设置为0，以防下一次进入时依然保留上一次的index
 onBeforeUnmount(() => {
   store.listIndex = 0
 })

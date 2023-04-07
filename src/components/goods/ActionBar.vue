@@ -26,6 +26,7 @@ const _this = getCurrentInstance()
 const mitter = _this?.appContext.config.globalProperties.mitter
 
 const addToCart = () => {
+  // 点击添加购物车,给goods页面发送自定义事件
   mitter.emit('add')
 }
 </script>

@@ -35,7 +35,7 @@ interface UserOptions {
   }[]
 }
 const userOptions = ref<UserOptions[]>([])
-
+// 获取用户页面的选项数据
 const getUserOptions = async () => {
   const { data: res } = await reqGetUserOptions()
 

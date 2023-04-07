@@ -43,11 +43,12 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const tel = route.query.tel as string
-
+// 表单绑定的数据
 const formData = reactive({
   password: '',
   confirmPwd: ''
 })
+// 表单验证规则
 const rules = {
   password(value: string) {
     if (!pwdTest.test(value)) {
@@ -62,15 +63,17 @@ const rules = {
     return true
   }
 }
-
+// 重置密码方法
 const resetPwd = async () => {
   try {
+    // 发起请求携带用户号码,和新密码修改
     const { data: res } = await reqPostChangePwd({
       tel,
       pwd: formData.password
     })
 
     if (res.code === 200) {
+      // 修改成功跳转到密码登录页面
       showSuccessToast(res.msg)
       router.push('/login/index')
     } else {

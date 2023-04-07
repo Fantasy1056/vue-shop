@@ -57,13 +57,15 @@ import { moblieTest, pwdTest } from '@/utils/validata'
 import { user } from '@/store/user'
 
 const store = user()
-
+// 表单绑定的数据
 const formData = reactive({
   moblie: '',
   password: ''
 })
+// 登陆方法
 const login = async () => {
   try {
+    // 发起请求携带表单数据登录
     const { data: res } = await reqPostLogin({
       tel: formData.moblie,
       pwd: formData.password
@@ -71,9 +73,15 @@ const login = async () => {
 
     if (res.code === 200) {
       showSuccessToast(res.data.msg)
+      // 仓库存储用户数据
       store.userData = res.data.data
+      // 本地存储token
       localStorage.setItem('token', res.data.data.token)
+      // 登陆状态为true
       store.loginState = true
+      // 仓库存储token
+      store.token = res.data.data.token
+      // 跳转到用户页面
       router.push('/user')
     } else {
       store.loginState = false

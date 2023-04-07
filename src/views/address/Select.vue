@@ -50,12 +50,13 @@ interface AddressInfo {
   address: string
   isDefault: boolean | number
 }
+// 用户数据仓库
 const store = address()
-
+// 地址列表数据
 const addressList = computed(() => store.addressList)
-
+// 点击后对号高亮的index
 const activeIndex = ref(-1)
-
+// 跳转到编辑地址页面
 const editAddress = (id: number, isDefault: number) => {
   if (isDefault) {
     router.push({
@@ -70,12 +71,14 @@ const editAddress = (id: number, isDefault: number) => {
     })
   }
 }
-
+// 点击对号后将当前地址修改为默认地址
 const changeDefaultAddress = async (data: AddressInfo) => {
   try {
+    // 发起请求修改为默认地址
     const { data: res } = await reqPostChangeDefaultAdd(data)
 
     if (res.code === 200) {
+      // 修改成功后重新获取购物车数据，更新页面
       store.getAddressList()
       showLoadingToast({
         message: '修改中',

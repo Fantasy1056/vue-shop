@@ -1,5 +1,6 @@
 <template>
   <div class="user-header">
+    <!-- 用户头部navbar -->
     <div class="bd">
       <a @click="router.go(-1)">
         <svg class="icon" aria-hidden="true">
@@ -12,6 +13,7 @@
         </svg>
       </a>
     </div>
+    <!-- 已登录展示的组件 -->
     <div class="my-info" v-if="loginState">
       <a>
         <img
@@ -24,6 +26,7 @@
       </div>
       <a class="logout" @click="logout">退出登录</a>
     </div>
+    <!-- 未登录展示的组件 -->
     <div class="no-login" v-else>
       <a @click="router.push('/login/loginsms')">登录 / 注册</a>
     </div>
@@ -48,12 +51,14 @@ const userData = computed(() => store.userData)
 
 const loginState = computed(() => store.loginState)
 
+// 用户退出方法
 const logout = () => {
   showConfirmDialog({
     title: '退出登录',
     message: '确定退出登录吗？'
   })
     .then(() => {
+      // 提示推出成功，清除本地存储的token，登陆状态改变为false，清除用户数据和购物车数据后跳转到登陆页面
       showSuccessToast('退出成功！')
       localStorage.removeItem('token')
       store.loginState = false

@@ -62,12 +62,13 @@ import { moblieTest, codeTest, pwdTest } from '@/utils/validata'
 import { reqPostRegister } from '@/api'
 import { showFailToast, showSuccessToast } from 'vant'
 import router from '@/router'
+// 表单绑定的数据
 const formData = reactive({
   moblie: '',
   password: '',
   msgCode: ''
 })
-
+// 表单验证规则
 const rules = {
   moblie(value: string) {
     if (!moblieTest.test(value)) {
@@ -88,9 +89,10 @@ const rules = {
     return true
   }
 }
-
+// 注册方法
 const register = async () => {
   try {
+    // 发起请求携带表单数据注册
     const { data: res } = await reqPostRegister({
       tel: formData.moblie,
       pwd: formData.password,
@@ -98,6 +100,7 @@ const register = async () => {
     })
     if (res.code === 200) {
       showSuccessToast(res.msg)
+      // 注册成功跳转到登陆页面
       router.push('/login')
     } else {
       showFailToast(res.msg)

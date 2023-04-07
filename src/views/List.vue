@@ -1,8 +1,11 @@
 <template>
   <div class="list">
+    <!-- 列表组件头部 -->
     <Header></Header>
     <section id="page">
+      <!-- 列表侧边栏 -->
       <NavList></NavList>
+      <!-- 列表内容 -->
       <NavWarp></NavWarp>
     </section>
   </div>

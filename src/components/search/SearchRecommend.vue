@@ -37,7 +37,7 @@ interface SearchRecommed {
   price: number
 }
 const searchRecommendList = ref<SearchRecommed[]>([])
-
+// 发起请求获取推荐数据列表
 const getSearchRecommendList = async () => {
   const { data: res } = await reqGetSearchRecommend()
 
@@ -45,6 +45,7 @@ const getSearchRecommendList = async () => {
     searchRecommendList.value = res.data
   }
 }
+// 点击推荐商品跳转到商品页面,携带商品id
 const goToGoods = (id: number) => {
   router.push({
     path: '/goods',

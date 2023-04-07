@@ -11,6 +11,7 @@
         <b>商品</b>
       </div> -->
       <div class="item-bd" v-for="item in cartList" :key="item.goods_id">
+        <!-- 点击选择框的时候，将当前商品的state取反，再发起请求更新当前商品状态 -->
         <div
           class="item-checkbox"
           :class="{ active: item.state }"
@@ -38,7 +39,10 @@
               <use xlink:href="#icon-shanchu"></use>
             </svg>
           </a>
+          <!-- 点击数量加减的时候，将当前商品的数量加减，再发起请求更新当前商品状态 -->
+          <!-- 使用pinia时，直接修改数据时仓库对应的数据也会一并修改 -->
           <div class="item-num">
+            <!-- 当前商品数量为1时禁用减数量按钮 -->
             <button
               @click="item.goods_num--, updataCartList(item)"
               :disabled="item.goods_num === 1"
@@ -76,15 +80,15 @@ interface GoodsData {
   goods_num: number
   state: number
 }
-
+// 获取本地存储的token
 const token = ref(localStorage.getItem('token') as string)
-
+// 获取当前用户id
 const userId = computed(() => user().userData.id)
-
+// 购物车数据仓库
 const cartStore = cart()
-
+// 购物车列表数据
 const cartList = computed(() => cartStore.cartList)
-
+// 改变商品属性的方法
 const updataCartList = async (data: GoodsData) => {
   try {
     showLoadingToast({
@@ -92,6 +96,7 @@ const updataCartList = async (data: GoodsData) => {
       duration: 0,
       forbidClick: true
     })
+    // 发起请求携带修改后的对象修改数据库里的数据
     const { data: res } = await reqPostUpdateCartList(data)
 
     if (res.code === 200) {
@@ -101,7 +106,7 @@ const updataCartList = async (data: GoodsData) => {
     console.log(error)
   }
 }
-
+// 根据商品id删除对应商品方法
 const deleteCartItem = (id: GoodsData) => {
   showConfirmDialog({
     title: '删除商品',
@@ -112,6 +117,7 @@ const deleteCartItem = (id: GoodsData) => {
         const { data: res } = await reqDeleteCartItem(id)
 
         if (res.code === 200) {
+          // 删除完成重新调用获取购物车数据方法，更新页面
           showSuccessToast('删除成功！')
           cartStore.getCartList(userId.value)
         } else {
@@ -125,6 +131,7 @@ const deleteCartItem = (id: GoodsData) => {
       showFailToast('取消删除')
     })
 }
+// 如果token存在但是购物车数据为空，从新发起请求获取数据
 if (token.value && cartStore.cartList.length === 0) {
   cartStore.getCartList(userId.value)
 }

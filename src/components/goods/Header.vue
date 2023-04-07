@@ -38,10 +38,13 @@ import router from '@/router'
 import { ref, getCurrentInstance, onMounted } from 'vue'
 const _this = getCurrentInstance()
 const mitter = _this?.appContext.config.globalProperties.mitter
+// 展示内容的状态
 const isShow = ref(true)
+// 切换内容的透明度
 const opacity = ref(0)
-
+// 页面挂载完毕触发的方法
 onMounted(() => {
+  // 监听响应goods页面触发的自定义事件
   mitter.on('show', (val: { state: boolean; pos: number }) => {
     isShow.value = val.state
     opacity.value = val.pos

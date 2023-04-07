@@ -41,10 +41,12 @@ import { moblieTest, codeTest } from '@/utils/validata'
 import { reqPostFindUser } from '@/api/index'
 import { showFailToast } from 'vant'
 import router from '@/router'
+// 表单绑定的数据
 const formData = reactive({
   moblie: '',
   msgCode: ''
 })
+// 表单验证规则
 const rules = {
   moblie(value: string) {
     if (!moblieTest.test(value)) {
@@ -59,13 +61,14 @@ const rules = {
     return true
   }
 }
-
+// 查找是否存在当前用户方法
 const findUser = async () => {
   try {
     const { data: res } = await reqPostFindUser({
       tel: formData.moblie
     })
     if (res.code === 200) {
+      // 用户存在,跳转到重新设置密码页面,携带当前用户手机号
       router.push({
         name: 'findpwd',
         query: {

@@ -27,11 +27,13 @@
 <script lang="ts" setup>
 import { cart } from '@/store/cart'
 import { computed } from 'vue'
-
+// 购物车数据仓库
 const cartStore = cart()
-
+// 购物车选中商品的总价格
 const totalPrice = computed(() => cartStore.totalPrice)
+// 购物车选中商品的总数量
 const totalNum = computed(() => cartStore.totalNum)
+// 当前购物车商品是否全选
 const isAllCheck = computed(() => cartStore.isAllChecked)
 </script>
 
