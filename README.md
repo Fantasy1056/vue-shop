@@ -1,5 +1,5 @@
 # tea-shop
-
+一个vue3+ts+pinia的练手项目
 ## Project setup
 ```
 yarn install
