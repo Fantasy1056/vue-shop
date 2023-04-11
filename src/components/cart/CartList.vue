@@ -102,9 +102,7 @@ const updataCartList = async (data: GoodsData) => {
     if (res.code === 200) {
       closeToast(true)
     }
-  } catch (error) {
-    console.log(error)
-  }
+  } catch (error) {}
 }
 // 根据商品id删除对应商品方法
 const deleteCartItem = (id: GoodsData) => {
@@ -123,9 +121,7 @@ const deleteCartItem = (id: GoodsData) => {
         } else {
           showFailToast('删除失败！')
         }
-      } catch (error) {
-        console.log(error)
-      }
+      } catch (error) {}
     })
     .catch(() => {
       showFailToast('取消删除')

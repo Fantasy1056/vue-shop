@@ -33,7 +33,7 @@ export const address = defineStore('address', {
           })
         }
       } catch (error) {
-        console.log(error)
+        return error
       }
     },
     clearAddressList() {

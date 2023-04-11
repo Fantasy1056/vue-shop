@@ -80,7 +80,7 @@ const resetPwd = async () => {
       showFailToast(res.msg)
     }
   } catch (error) {
-    console.log(error)
+    return error
   }
 }
 </script>

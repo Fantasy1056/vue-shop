@@ -147,7 +147,7 @@ const getAddressById = async () => {
         })
       }
     } catch (error) {
-      console.log(error)
+      return error
     }
   }
 }
@@ -185,7 +185,7 @@ const saveAddress = async () => {
       })
     }
   } catch (error) {
-    console.log(error)
+    return error
   }
 }
 // 编辑地址数据
@@ -220,11 +220,11 @@ const editAddress = async () => {
       })
     }
   } catch (error) {
-    console.log(error)
+    return error
   }
 }
 // 省市区选择框确认后的方法
-const confirm = (val: any) => {
+const confirm = (val: { selectedValues: string[] }) => {
   // 关闭选择框
   show.value = false
   // 保存选择后的地址数据
@@ -247,7 +247,7 @@ const deleteAddress = async () => {
       })
     }
   } catch (error) {
-    console.log(error)
+    return error
   }
 }
 

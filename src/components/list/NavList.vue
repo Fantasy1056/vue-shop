@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, getCurrentInstance, onBeforeUnmount, onActivated } from 'vue'
+import { computed, getCurrentInstance, onBeforeUnmount } from 'vue'
 import { list } from '@/store/list'
 
 // 列表数据仓库

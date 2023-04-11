@@ -128,7 +128,7 @@ const login = async () => {
       showFailToast(res.data.msg)
     }
   } catch (error) {
-    console.log(error)
+    return error
   }
 }
 // watch(

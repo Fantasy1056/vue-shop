@@ -24,7 +24,7 @@ export const cart = defineStore('cart', {
           this.cartList = res.data
         }
       } catch (err) {
-        console.log(err)
+        return err
       }
     },
     changeState(data: CartList) {

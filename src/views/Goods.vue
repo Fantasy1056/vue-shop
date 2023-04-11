@@ -94,13 +94,13 @@ const _this = getCurrentInstance()
 // 全局事件总线
 const mitter = _this?.appContext.config.globalProperties.mitter
 // 路由携带的id值
-const id = ref(parseInt(route.query.id as any))
+const id = ref(parseInt(route.query.id as string))
 // 当keepalive组件进入时触发的方法
 onActivated(() => {
   // 如果当前存储的id不等于再次进入携带的路由参数id
-  if (id.value !== (route.query.id as any)) {
+  if (id.value !== parseInt(route.query.id as string)) {
     // 保存新的id
-    id.value = route.query.id as any
+    id.value = parseInt(route.query.id as string)
     // 重新获取商品数据
     getGoodsData()
   }
@@ -156,7 +156,7 @@ onMounted(() => {
         showFailToast('添加失败！')
       }
     } catch (error) {
-      console.log(error)
+      return error
     }
   })
 })

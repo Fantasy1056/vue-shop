@@ -37,8 +37,8 @@ export const user = defineStore('user', {
             this.userData = res.data.data
             this.loginState = true
           }
-        } catch (error) {
-          console.log(error)
+        } catch (err) {
+          return err
         }
       }
     }

@@ -12,8 +12,14 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use((config) => {
   return config
 })
+let baseURL = ''
 
+if (process.env.VUE_APP_ENV === 'dev') {
+  baseURL = '/api'
+} else {
+  baseURL = process.env.VUE_APP_BASE_URL
+}
 export const $http = axios.create({
-  baseURL: '/api',
+  baseURL,
   timeout: 10000
 })

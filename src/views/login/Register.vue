@@ -106,7 +106,7 @@ const register = async () => {
       showFailToast(res.msg)
     }
   } catch (error) {
-    console.log(error)
+    return error
   }
 }
 </script>

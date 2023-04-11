@@ -88,7 +88,7 @@ const login = async () => {
       showFailToast(res.data.msg)
     }
   } catch (error) {
-    console.log(error)
+    return error
   }
 }
 // 表单验证规则
