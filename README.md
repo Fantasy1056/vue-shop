@@ -16,23 +16,9 @@
 ```
 ## 项目展示
 
-![image](https://github.com/Fantasy1056/vue-shop/tree/main/public/home.gif)
-
-![image](https://github.com/Fantasy1056/vue-shop/tree/main/public/list.gif)
-
-![image](https://github.com/Fantasy1056/vue-shop/tree/main/public/login.gif)
-
-![image](https://github.com/Fantasy1056/vue-shop/tree/main/public/cart.gif)
-
-![image](https://github.com/Fantasy1056/vue-shop/tree/main/public/checkout.gif)
-
-![image](https://github.com/Fantasy1056/vue-shop/tree/main/public/address.gif)
-
-![image](https://github.com/Fantasy1056/vue-shop/tree/main/public/search.gif)
-
-![image](https://github.com/Fantasy1056/vue-shop/tree/main/public/searchByTag.gif)
-
-![image](https://github.com/Fantasy1056/vue-shop/tree/main/public/addToCart.gif)
+```
+https://www.bilibili.com/video/BV1xs4y1K7iR
+```
 
 ## 项目初始化
 ```
